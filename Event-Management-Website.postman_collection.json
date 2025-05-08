@@ -1,0 +1,5067 @@
+{
+	"info": {
+		"_postman_id": "b5563bb5-35d7-459f-9a27-a29ec40ab14f",
+		"name": "Event-Management-Website",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36469971"
+	},
+	"item": [
+		{
+			"name": "Admin API",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "getalladmin",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/admin/getalladmin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"getalladmin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Signup",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"test\",\n    \"email\":\"test4@yopmail.com\",\n    \"password\":\"12345678\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://event-management-website-amber.vercel.app/api/admin/signup",
+									"protocol": "https",
+									"host": [
+										"event-management-website-amber",
+										"vercel",
+										"app"
+									],
+									"path": [
+										"api",
+										"admin",
+										"signup"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"console.log(pm.environment.replaceIn('OLD - Token:- {{token}}'));",
+											"const res = pm.response.json()",
+											"pm.environment.set(\"token\", res.info.token);",
+											"",
+											"console.log(pm.environment.replaceIn('NEW - Token:- {{token}}'));"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"treeforman@yopmail.com\",\n    \"password\":\"12345678\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Refreshtoken",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"console.log(pm.environment.replaceIn('OLD - Token:- {{token}}'));",
+											"const res = pm.response.json()",
+											"pm.environment.set(\"token\", res.info);",
+											"",
+											"console.log(pm.environment.replaceIn('NEW - Token:- {{token}}'));"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refreshToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiX2lkIjoiNjc3Y2Y0NGFmNTU3Njk1NjIwZjM5NDJiIiwiaWF0IjoxNzM2MjQyNzEyfQ._44pDmmkRkg3AjXhY_Xtcn7cCoxMXiIkNyT0ciu5lko\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/refreshtoken",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"refreshtoken"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "checkemailid and send forgotpassword link",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"treeforman@yopmail.com\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/checkemailid",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"checkemailid"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verifylink",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"677cf8bde0dcef800ef6f4bc\",\n    \"resetcode\":\"5a31db5020f6f6ab6464351ddf2809040191660c11f8bbb9fdddebdf58f6b511\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/verifylink",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"verifylink"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "resetpassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"677cf8bde0dcef800ef6f4bc\",\n    \"resetcode\":\"26ecbf3b90f10ed3a63097013a2968c0e56fcdb76becfe57b055baccf6d85c12\",\n    \"password\":\"123456\",\n    \"confpassword\":\"123456\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/resetpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "changepassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"password\":\"12345678\",\n    \"newPassword\":\"123456\",\n    \"confirmPassword\":\"123456\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/changepassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"changepassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "changeprofile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "testforman",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Downloads/849ab236-e3bb-4e20-970f-e037acdd6ee3.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/changeprofile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"changeprofile"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Allusers",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/admin/user/allusers",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"user",
+										"allusers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "changestatus",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"677f49da7bfb914ce595e9ec\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/user/changestatus",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"user",
+										"changestatus"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "http://localhost:5600/api/admin/contectus/allcontectus",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/admin/contectus/allcontectus",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"contectus",
+										"allcontectus"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "State",
+					"item": [
+						{
+							"name": "allstates",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/state/allstates",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"state",
+										"allstates"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addstate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"Gujarat\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/state/addstate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"state",
+										"addstate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updatestate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"678094ea0a083b4d8b4b3cd4\",\n    \"name\":\"U.S.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/state/updatestate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"state",
+										"updatestate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletestate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"67809906d494dc6d02e775ff\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/state/deletestate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"state",
+										"deletestate"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "City",
+					"item": [
+						{
+							"name": "allcities",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/city/allcities",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"city",
+										"allcities"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addcity",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "New York",
+											"type": "text"
+										},
+										{
+											"key": "stateid",
+											"value": "678094ea0a083b4d8b4b3cd4",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Downloads/Veix-Goodbye-New-York-Color.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/city/addcity",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"city",
+										"addcity"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updatecity",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "New York",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Downloads/Veix-Goodbye-New-York-Color.png"
+										},
+										{
+											"key": "id",
+											"value": "67809a5c14b013a68730b164",
+											"type": "text"
+										},
+										{
+											"key": "stateid",
+											"value": "67809e0cab7d451a459dba95",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/city/updatecity",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"city",
+										"updatecity"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getcitybystateid",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stateid\":\"6780b073af160927f7985934\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/city/getcitybystateid",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"city",
+										"getcitybystateid"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updatecitystatus",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"status\":\"true\",\n    \"id\":\"67809a5c14b013a68730b164\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/city/updatecitystatus",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"city",
+										"updatecitystatus"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Venue",
+					"item": [
+						{
+							"name": "allvenues",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/venue/allvenues",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"venue",
+										"allvenues"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addvenue",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"address\":\"225 Liberty Street\",\n    \"cityid\":\"67809a5c14b013a68730b164\",\n    \"stateid\":\"678094ea0a083b4d8b4b3cd4\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/venue/addvenue",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"venue",
+										"addvenue"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updatevenue",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"6780a141aa13b5de55eb1fb1\",\n    \"address\":\"226 Liberty Street\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/venue/updatevenue",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"venue",
+										"updatevenue"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletevenue",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"6780a19f1114ce6e69ead23a\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/venue/deletevenue",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"venue",
+										"deletevenue"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getvenuebycityid",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"cityid\":\"67809a5c14b013a68730b164\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/venue/getvenuebycityid",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"venue",
+										"getvenuebycityid"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getvenuebystateid",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stateid\":\"678094ea0a083b4d8b4b3cd4\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/venue/getvenuebystateid",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"venue",
+										"getvenuebystateid"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "allcategories",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api//admin/category/allcategories",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"",
+										"admin",
+										"category",
+										"allcategories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addcategory",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Downloads/business_10237563 1.svg"
+										},
+										{
+											"key": "hoverimage",
+											"type": "file",
+											"src": "/home/paras/Downloads/business_10237563 1 (1).svg"
+										},
+										{
+											"key": "name",
+											"value": "Business",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api//admin/category/addcategory",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"",
+										"admin",
+										"category",
+										"addcategory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updatecategory",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"6781fd5c608e509db6ed3d63\",\n    \"status\":true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api//admin/category/updatecategory",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"",
+										"admin",
+										"category",
+										"updatecategory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletecategory",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"6782123c3913bd54bcc5a0b0\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/category/deletecategory",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"category",
+										"deletecategory"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Event",
+					"item": [
+						{
+							"name": "allevents",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api//admin/event/allevents",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"",
+										"admin",
+										"event",
+										"allevents"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addevent",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Pictures/1dc9d85b1bb541d95bbbc81df300b863.png"
+										},
+										{
+											"key": "multipleImage",
+											"type": "file",
+											"src": [
+												"/home/paras/Downloads/young-asian-athletes-competing-track.png",
+												"/home/paras/Downloads/group-young-athletes-training-stadium-school-gym-trainings-athletics.png",
+												"/home/paras/Downloads/sportsmen-running-stadium.png",
+												"/home/paras/Downloads/group-multiethnic-people-playing-basketball-court.png",
+												"/home/paras/Downloads/preparations-big-game-have-begun-cropped-shot-group-young-rugby-players-training-field-day.png",
+												"/home/paras/Downloads/athlete-his-knees-raising-his-arms-victory-after-race.png"
+											]
+										},
+										{
+											"key": "name",
+											"value": "Sports Mania Tournament",
+											"type": "text"
+										},
+										{
+											"key": "categoryid",
+											"value": "6781fd5c608e509db6ed3d63",
+											"type": "text"
+										},
+										{
+											"key": "free",
+											"value": "false",
+											"type": "text"
+										},
+										{
+											"key": "room",
+											"value": "02",
+											"type": "text"
+										},
+										{
+											"key": "venueid",
+											"value": "67811710d38b36e98b1d1304",
+											"type": "text"
+										},
+										{
+											"key": "cityid",
+											"value": "6780f1abc9fccdc86f47f07b",
+											"type": "text"
+										},
+										{
+											"key": "stateid",
+											"value": "6780b073af160927f7985934",
+											"type": "text"
+										},
+										{
+											"key": "startDate",
+											"value": "2025/01/12",
+											"type": "text"
+										},
+										{
+											"key": "endDate",
+											"value": "2025/01/20",
+											"type": "text"
+										},
+										{
+											"key": "timeFrom",
+											"value": "06:30 PM",
+											"type": "text"
+										},
+										{
+											"key": "timeTo",
+											"value": "8:30 PM ",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "250.20",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "The Sports Mania Tournament is the ultimate celebration of athleticism, teamwork, and competitive spirit. Bringing together sports enthusiasts from around the globe, this thrilling event features a diverse lineup of games, including basketball, soccer, tennis, and more. Whether you're a participant showcasing your skills or a fan cheering from the stands, the tournament promises.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api//admin/event/addevent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"",
+										"admin",
+										"event",
+										"addevent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteevent",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"67822c28bc1b711350a01b42\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/event/deleteevent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"event",
+										"deleteevent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateevent",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Pictures/1dc9d85b1bb541d95bbbc81df300b863.png"
+										},
+										{
+											"key": "multipleImage",
+											"type": "file",
+											"src": [
+												"/home/paras/Downloads/young-asian-athletes-competing-track.png",
+												"/home/paras/Downloads/group-young-athletes-training-stadium-school-gym-trainings-athletics.png"
+											]
+										},
+										{
+											"key": "name",
+											"value": "Sports Mania Tournament",
+											"type": "text"
+										},
+										{
+											"key": "room",
+											"value": "02",
+											"type": "text"
+										},
+										{
+											"key": "startDate",
+											"value": "2025/01/12",
+											"type": "text"
+										},
+										{
+											"key": "endDate",
+											"value": "2025/01/12",
+											"type": "text"
+										},
+										{
+											"key": "removeImage",
+											"value": "1736590314568-2021-07-18.jpg",
+											"type": "text"
+										},
+										{
+											"key": "removeImage",
+											"value": "1736590314569-cc9b6e4ebd6083713b924fdf2dc13f06.png",
+											"type": "text"
+										},
+										{
+											"key": "id",
+											"value": "67822c5a4315b1484953e61b",
+											"type": "text"
+										},
+										{
+											"key": "free",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/event/updateevent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"event",
+										"updateevent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "geteventbycategory",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"categoryid\":\"6781fd5c608e509db6ed3d63\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api//admin/event/geteventbycategory",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"",
+										"admin",
+										"event",
+										"geteventbycategory"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "geteventbyvenue",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"venueid\":\"67811710d38b36e98b1d1304\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api//admin/event/geteventbyvenue",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"",
+										"admin",
+										"event",
+										"geteventbyvenue"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "income",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/admin/order/income",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"order",
+										"income"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "geteventticket",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"eventid\":\"67d14c7c7a40044ffb49fbb7\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/event/geteventticket",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"event",
+										"geteventticket"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Day",
+					"item": [
+						{
+							"name": "allday",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/admin/day/allday",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"day",
+										"allday"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addday",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Day2\",\n    \"date\": \"2025-01-14\",\n    \"eventid\": \"6784ffcabef9ab347e364dfd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/day/addday",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"day",
+										"addday"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateday",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"67873ad7aaabef2531acc65c\",\n    \"name\":\"Day1\",\n    \"date\":\"2025-01-16\",\n    \"eventid\":\"6785020851405e96edcc8f39\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/day/updateday",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"day",
+										"updateday"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteday",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"67873abaaaabef2531acc652\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/day/deleteday",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"day",
+										"deleteday"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getdaybyeventid",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"eventid\":\"6784ffcabef9ab347e364dfd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/day/getdaybyeventid",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"day",
+										"getdaybyeventid"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Shedule",
+					"item": [
+						{
+							"name": "createshedule",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"eventid\":\"6784ffcabef9ab347e364dfd\",\n    \"dayid\":\"67873a64aaabef2531acc637\",\n    \"starttime\":\"10:30\",\n    \"endtime\":\"12:30\",\n    \"title\":\"Welcome & Registration\",\n    \"description\":\"Discover cutting-edge advancements shaping the future of AI. Stay ahead with.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/session/createshedule",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"session",
+										"createshedule"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getshedule",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/session/getshedule",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"session",
+										"getshedule"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateshedule",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"678759586fc735d79b8e0442\",\n    \"starttime\": \"11:00\",\n    \"endtime\": \"12:30\",\n    \"title\": \"How to organize great events\",\n    \"description\": \"Discover cutting-edge advancements shaping the future of AI. Stay ahead with.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/session/updateshedule",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"session",
+										"updateshedule"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteshedule",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"6787563ecc9600f9c313d775\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/session/deleteshedule",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"session",
+										"deleteshedule"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getshedulebydayid",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"dayid\":\"67873a64aaabef2531acc637\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/session/getshedulebydayid",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"session",
+										"getshedulebydayid"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Presenter",
+					"item": [
+						{
+							"name": "allpresenters",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/admin/presenter/allpresenters",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"presenter",
+										"allpresenters"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addpresenter",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Pictures/02b0c34d46753decfd4a163e26df2a30.jpeg"
+										},
+										{
+											"key": "name",
+											"value": "John Doe ",
+											"type": "text"
+										},
+										{
+											"key": "dayid",
+											"value": "67873a64aaabef2531acc637",
+											"type": "text"
+										},
+										{
+											"key": "sessionid",
+											"value": "6787557d550f0c6a2f193ef7",
+											"type": "text"
+										},
+										{
+											"key": "eventid",
+											"value": "6784ffcabef9ab347e364dfd",
+											"type": "text"
+										},
+										{
+											"key": "position",
+											"value": "CEO",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/presenter/addpresenter",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"presenter",
+										"addpresenter"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updatepresenter",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Pictures/02b0c34d46753decfd4a163e26df2a30.jpeg"
+										},
+										{
+											"key": "id",
+											"value": "67879422ba998bc5ab13f79a",
+											"type": "text"
+										},
+										{
+											"key": "position",
+											"value": "CEO",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/presenter/updatepresenter",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"presenter",
+										"updatepresenter"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletepresenter",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"67879558a940484439447a7e\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/presenter/deletepresenter",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"presenter",
+										"deletepresenter"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getpresenterbyid",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"sessionid\":\"6787557d550f0c6a2f193ef7\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/presenter/getpresenterbysessionid",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"presenter",
+										"getpresenterbysessionid"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "App Setting",
+					"item": [
+						{
+							"name": "getappsetting",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/admin/appsetting/getappsetting",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"appsetting",
+										"getappsetting"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createappsetting",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Find E-Event",
+											"type": "text"
+										},
+										{
+											"key": "currency",
+											"value": "₹",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Downloads/Find E-Event.svg"
+										},
+										{
+											"key": "footerlogo",
+											"type": "file",
+											"src": "/home/paras/Downloads/Find E-Event (1).svg"
+										},
+										{
+											"key": "favicon",
+											"type": "file",
+											"src": "/home/paras/Downloads/Find E-Event.svg"
+										},
+										{
+											"key": "address",
+											"value": "123 Serenity Lane, Cityscape, New York, NY 10001, USA",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "+1 (123) 456-7890",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "info@finde-event.com",
+											"type": "text"
+										},
+										{
+											"key": "workinghours",
+											"value": "Monday - Saturday\n8:00 AM - 6:00 PM",
+											"type": "text"
+										},
+										{
+											"key": "facebook",
+											"value": "https://www.facebook.com",
+											"type": "text"
+										},
+										{
+											"key": "instagram",
+											"value": "https://www.instagram.com",
+											"type": "text"
+										},
+										{
+											"key": "twitter",
+											"value": "https://x.com",
+											"type": "text"
+										},
+										{
+											"key": "youtube",
+											"value": "https://www.youtube.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/appsetting/createappsetting",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"appsetting",
+										"createappsetting"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateappsetting",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "favicon",
+											"type": "file",
+											"src": "/home/paras/Downloads/Find E-Event (1).svg"
+										},
+										{
+											"key": "name",
+											"value": "Find E-Event",
+											"type": "text"
+										},
+										{
+											"key": "id",
+											"value": "67888b3013a13eb501db0954",
+											"type": "text"
+										},
+										{
+											"key": "footerlogo",
+											"type": "file",
+											"src": "/home/paras/Downloads/Find E-Event.svg"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Downloads/Find E-Event.svg"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/appsetting/updateappsetting",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"appsetting",
+										"updateappsetting"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Sponsors",
+					"item": [
+						{
+							"name": "allsponsors",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/admin/sponsor/allsponsors",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"sponsor",
+										"allsponsors"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addsponsor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Downloads/partner-1.png"
+										},
+										{
+											"key": "name",
+											"value": "graphicriver",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/sponsor/addsponsor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"sponsor",
+										"addsponsor"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updatesponsor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Downloads/partner-4 1.png"
+										},
+										{
+											"key": "name",
+											"value": "activeden",
+											"type": "text"
+										},
+										{
+											"key": "id",
+											"value": "6788c97fe2a9ecaa15fcae29",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/sponsor/updatesponsor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"sponsor",
+										"updatesponsor"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletesponsor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"6788c9517cd198b942888ff6\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/sponsor/deletesponsor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"sponsor",
+										"deletesponsor"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Review",
+					"item": [
+						{
+							"name": "allreviews",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/admin/review/allreviews",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"review",
+										"allreviews"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getreviewbyeventid",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"eventid\":\"6784ffcabef9ab347e364dfd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/review/getreviewbyeventid",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"review",
+										"getreviewbyeventid"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Blog",
+					"item": [
+						{
+							"name": "createblog",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Downloads/group-people-doing-yoga-summer-park.png"
+										},
+										{
+											"key": "multipleImage",
+											"type": "file",
+											"src": [
+												"/home/paras/Downloads/workers-enjoying-sandwiches-lunch.png",
+												"/home/paras/Downloads/group-people-having-fun-singing-playing-instruments-laughing-enjoying.png"
+											]
+										},
+										{
+											"key": "title",
+											"value": "asasa",
+											"type": "text"
+										},
+										{
+											"key": "content",
+											"value": "asasas",
+											"type": "text"
+										},
+										{
+											"key": "content2",
+											"value": "sasasa",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/blog/createblog",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"blog",
+										"createblog"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "allblogs",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/admin/blog/allblogs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"blog",
+										"allblogs"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateblog",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "id",
+											"value": "679076cf324c5fd42d751fd5",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Downloads/workers-enjoying-sandwiches-lunch.png"
+										},
+										{
+											"key": "multipleImage",
+											"type": "file",
+											"src": [
+												"/home/paras/Downloads/group-people-having-fun-singing-playing-instruments-laughing-enjoying.png",
+												"/home/paras/Downloads/group-people-doing-yoga-summer-park.png"
+											]
+										},
+										{
+											"key": "title",
+											"value": "sdafafahadffhadfhazdfhs",
+											"type": "text"
+										},
+										{
+											"key": "removeImage",
+											"value": "http://localhost:5600/blogimg/1737520847155-workers-enjoying-sandwiches-lunch.png",
+											"type": "text"
+										},
+										{
+											"key": "removeImage",
+											"value": "http://localhost:5600/blogimg/1737520847167-group-people-having-fun-singing-playing-instruments-laughing-enjoying.png",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/blog/updateblog",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"blog",
+										"updateblog"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteblog",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"679076cf324c5fd42d751fd5\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/blog/deleteblog",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"blog",
+										"deleteblog"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cupon Code",
+					"item": [
+						{
+							"name": "createcuponcode",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"code\":\"Test20\",\n    \"discount\":\"20\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/cuponcode/createcuponcode",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"cuponcode",
+										"createcuponcode"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getallcuponcode",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/admin/cuponcode/getallcuponcode",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"cuponcode",
+										"getallcuponcode"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updatecuponcode",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"67a44005f58d7e7a32fbf197\",\n    \"status\":\"true\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/cuponcode/updatecuponcode",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"cuponcode",
+										"updatecuponcode"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Order",
+					"item": [
+						{
+							"name": "getorders",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/admin/order/getorders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"order",
+										"getorders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "daywiseincome",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/admin/dashbord/daywiseincome",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"dashbord",
+										"daywiseincome"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Dashbord",
+					"item": [
+						{
+							"name": "loginstats",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/admin/dashbord/loginstats",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"dashbord",
+										"loginstats"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "totalcount",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/admin/dashbord/totalcount",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"dashbord",
+										"totalcount"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Theme",
+					"item": [
+						{
+							"name": "adminTheme",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/admin/adminTheme",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"adminTheme"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateTheme",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"manu_color\":\"#0D263C\",\n    \"manuhover_color\":\"#EC6325\",\n    \"manu_text_color\":\"#F9FCFF\",\n    \"manu_text_hover_color\":\"#0D263C\",\n    \"button_color\":\"#EC6325\",\n    \"button_text_color\":\"#0D263C\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/updateTheme",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"updateTheme"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addTheme",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"manu_color\":\"#0D263C\",\n    \"manuhover_color\":\"#EC6325\",\n    \"manu_text_color\":\"#F9FCFF\",\n    \"manu_text_hover_color\":\"#0D263C\",\n    \"button_color\":\"#EC6325\",\n    \"button_text_color\":\"#0D263C\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/addTheme",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"addTheme"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Event Sponsor",
+					"item": [
+						{
+							"name": "addeventsponsor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Music/image1.png"
+										},
+										{
+											"key": "name",
+											"value": "graphicriver",
+											"type": "text"
+										},
+										{
+											"key": "eventid",
+											"value": "6799f811fcfe666fbf1d0464",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/eventsponsor/addeventsponsor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"eventsponsor",
+										"addeventsponsor"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "alleventsponsor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/admin/eventsponsor/alleventsponsor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"eventsponsor",
+										"alleventsponsor"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateeventsponsor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "test",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Music/image2.png"
+										},
+										{
+											"key": "id",
+											"value": "67cfb456ec749777df7041b7",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/eventsponsor/updateeventsponsor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"eventsponsor",
+										"updateeventsponsor"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteeventsponsor",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"67cfb456ec749777df7041b7\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/eventsponsor/deleteeventsponsor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"eventsponsor",
+										"deleteeventsponsor"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "geteventsponsorbyeventid",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n     \"eventid\": \"6799f811fcfe666fbf1d0464\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/eventsponsor/geteventsponsorbyeventid",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"eventsponsor",
+										"geteventsponsorbyeventid"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Popup Image",
+					"item": [
+						{
+							"name": "addpopupimage",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Downloads/Demo Website Notice.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/popupimage/addpopupimage",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"popupimage",
+										"addpopupimage"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getpopupimage",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/popupimage/getpopupimage",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"popupimage",
+										"getpopupimage"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updatepopupimage",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "id",
+											"value": "67d2846bf92cbf40adfa48ae",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/home/paras/Downloads/Demo Website Notice.png"
+										},
+										{
+											"key": "mobileimage",
+											"type": "file",
+											"src": "/home/paras/Downloads/Demo Website Notice (1).png"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/admin/popupimage/updatepopupimage",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"admin",
+										"popupimage",
+										"updatepopupimage"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "App API",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Register",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"test\",\n    \"email\":\"lugoillutaurau-6000@yopmail.com\",\n    \"password\":\"Test@1234\",\n    \"confpassword\":\"Test@1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/user/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"user",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verifyemail",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"lugoillutaurau-6000@yopmail.com\",\n    \"otp\":\"8979\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/user/verifyemail",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"user",
+										"verifyemail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"console.log(pm.environment.replaceIn('OLD - Token:- {{apptoken}}'));",
+											"const res = pm.response.json()",
+											"pm.environment.set(\"apptoken\", res.info.token);",
+											"",
+											"console.log(pm.environment.replaceIn('NEW - Token:- {{apptoken}}'));"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"lugoillutaurau-7000@yopmail.com\",\n    \"password\":\"Test@123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/user/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "checkemail",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"pd.idea2code@gmail.com\"\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/user/checkemail",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"user",
+										"checkemail"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"pd.idea2code@gmail.com\",\n    \"otp\":\"9741\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/user/verifyotp",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"user",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "forgotpassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"pd.idea2code@gmail.com\",\n    \"password\":\"Test@1234\",\n    \"confpassword\":\"Test@1234\",\n    \"otp\":\"9741\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/user/forgotpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"user",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getappsetting",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/app/user/getappsetting",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"user",
+										"getappsetting"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "sociallogin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"px.idea2code@gmail.com\",\n    \"social_id\": \"100359713547520795470\",\n    \"social_type\": \"google\",\n    \"name\": \"Parth D\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/user/sociallogin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"user",
+										"sociallogin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "refreshToken",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refreshToken\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRyZWVmb3J5b3UxMEB5b3BtYWlsLmNvbSIsIm5hbWUiOiJ0ZXN0IiwiX2lkIjoiNjdhZDY2MTI0OWVjMzhjNDY1ZjhjYTYzIiwiaWF0IjoxNzM5NTA1OTA4fQ.xTisvKJJIJbPseWqwK7yZHvbJG1h_642KOPRo6gnjfM\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/user/refreshToken",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"user",
+										"refreshToken"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getpopupimage",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/app/user/getpopupimage",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"user",
+										"getpopupimage"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "State",
+					"item": [
+						{
+							"name": "getstate",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/app/state/getstate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"state",
+										"getstate"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "City",
+					"item": [
+						{
+							"name": "getcity",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/app/city/getcity",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"city",
+										"getcity"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getcitybystateid",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stateId\":\"67809e0cab7d451a459dba95\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/city/getcitybystateid",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"city",
+										"getcitybystateid"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Venue",
+					"item": [
+						{
+							"name": "getvenue",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/app/venue/getvenue",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"venue",
+										"getvenue"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getvenuebycityid",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"cityId\":\"6780f1abc9fccdc86f47f07b\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/venue/getvenuebycityid",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"venue",
+										"getvenuebycityid"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "getcategory",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/app/category/getcategory",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"category",
+										"getcategory"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Event",
+					"item": [
+						{
+							"name": "Featuredevent",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/app/event/featuredevent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"event",
+										"featuredevent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "counts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/app/event/counts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"event",
+										"counts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "/search",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"sort\": \"Past Events\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/event/search",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"event",
+										"search"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "allEvent",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"sort\": \"Today\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/event/allEvent",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"event",
+										"allEvent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eventbyid",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/app/event/event/6784ffcabef9ab347e364dfd",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"event",
+										"event",
+										"6784ffcabef9ab347e364dfd"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addrating",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1Z29pbGx1dGF1cmF1LTYwMDBAeW9wbWFpbC5jb20iLCJuYW1lIjoidGVzdCIsIl9pZCI6IjY3YTBiMDE3YTNkMjRlZGViNzIyZDAxOSIsImlhdCI6MTczODk5MDEyNX0.kmb_ajbJppfGrEu_Sjq8Sm6zVC4UWQJjbCFJH-ASlEc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"eventid\":\"6799f811fcfe666fbf1d0464\",\n    \"rating\":\"5\",\n    \"comment\":\"best event\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/order/addrating",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"order",
+										"addrating"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "serceSuggetion",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"searchQuery\":\"spor\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/event/serceSuggetion",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"event",
+										"serceSuggetion"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getshedule",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"dayid\":\"67873a64aaabef2531acc637\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/event/getshedule",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"event",
+										"getshedule"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Blog",
+					"item": [
+						{
+							"name": "getlatestblog",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/app/blog/getlatestblog",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"blog",
+										"getlatestblog"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getallblog",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/app/blog/getallblog?page=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"blog",
+										"getallblog"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getblogbyid",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"67907b61e3437ba894e1095f\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/blog/getblogbyid",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"blog",
+										"getblogbyid"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Sponser",
+					"item": [
+						{
+							"name": "getsponser",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/app/sponser/getsponser",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"sponser",
+										"getsponser"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Contectus",
+					"item": [
+						{
+							"name": "sendmessage",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"test\",\n    \"email\":\"test@gmail.com\",\n    \"message\":\"asda\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/contectus/sendmessage",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"contectus",
+										"sendmessage"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cart",
+					"item": [
+						{
+							"name": "getcart",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBkLmlkZWEyY29kZUBnbWFpbC5jb20iLCJuYW1lIjoiUGFydGggRCIsIl9pZCI6IjY3YTQ1Y2U0OGJjMWU4ZWQ3YjMxNGRkOSIsImlhdCI6MTczODgyNDkzMiwiZXhwIjoxNzM4ODQyOTMyfQ.eB7vlwm6-bCvVznD2LuogyLxdzcZzh1JKkeJxn08tgE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/cart/getcart",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"cart",
+										"getcart"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "addtocart",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBkLmlkZWEyY29kZUBnbWFpbC5jb20iLCJuYW1lIjoiUGFydGggRCIsIl9pZCI6IjY3YTQ1Y2U0OGJjMWU4ZWQ3YjMxNGRkOSIsImlhdCI6MTczODgyNDkzMiwiZXhwIjoxNzM4ODQyOTMyfQ.eB7vlwm6-bCvVznD2LuogyLxdzcZzh1JKkeJxn08tgE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"eventId\":\"679729de58cb1f7455489e4a\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/cart/addtocart",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"cart",
+										"addtocart"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "removefromcart",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBkLmlkZWEyY29kZUBnbWFpbC5jb20iLCJuYW1lIjoiUGFydGggRCIsIl9pZCI6IjY3YTQ1Y2U0OGJjMWU4ZWQ3YjMxNGRkOSIsImlhdCI6MTczODgyNDkzMiwiZXhwIjoxNzM4ODQyOTMyfQ.eB7vlwm6-bCvVznD2LuogyLxdzcZzh1JKkeJxn08tgE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"67a4817901b1f1dc9c913fec\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/cart/removefromcart",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"cart",
+										"removefromcart"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updatecart",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBkLmlkZWEyY29kZUBnbWFpbC5jb20iLCJuYW1lIjoiUGFydGggRCIsIl9pZCI6IjY3YTQ1Y2U0OGJjMWU4ZWQ3YjMxNGRkOSIsImlhdCI6MTczODgyNDkzMiwiZXhwIjoxNzM4ODQyOTMyfQ.eB7vlwm6-bCvVznD2LuogyLxdzcZzh1JKkeJxn08tgE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"eventId\":\"679729de58cb1f7455489e4a\",\n    \"quantity\":\"1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/cart/updatecart",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"cart",
+										"updatecart"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getcuponcode",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBkLmlkZWEyY29kZUBnbWFpbC5jb20iLCJuYW1lIjoiUGFydGggRCIsIl9pZCI6IjY3YTQ1Y2U0OGJjMWU4ZWQ3YjMxNGRkOSIsImlhdCI6MTczODg0MzEzMH0.Rn0jfWZuo5yeua3Z4PWgPYAyaHWRm0Hlow27YR6zE_c",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/app/cart/getcuponcode",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"cart",
+										"getcuponcode"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "applycuponcode",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBkLmlkZWEyY29kZUBnbWFpbC5jb20iLCJuYW1lIjoiUGFydGggRCIsIl9pZCI6IjY3YTQ1Y2U0OGJjMWU4ZWQ3YjMxNGRkOSIsImlhdCI6MTczODg0MzEzMH0.Rn0jfWZuo5yeua3Z4PWgPYAyaHWRm0Hlow27YR6zE_c",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"code\":\"Test20\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/cart/applycuponcode",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"cart",
+										"applycuponcode"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Order",
+					"item": [
+						{
+							"name": "createorder",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1Z29pbGx1dGF1cmF1LTYwMDBAeW9wbWFpbC5jb20iLCJuYW1lIjoidGVzdCIsIl9pZCI6IjY3YTBiMDE3YTNkMjRlZGViNzIyZDAxOSIsImlhdCI6MTczODk5MDEyNX0.kmb_ajbJppfGrEu_Sjq8Sm6zVC4UWQJjbCFJH-ASlEc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"eventid\":\"679729de58cb1f7455489e4a\",\n    \"name\":\"test\",\n    \"email\":\"pd.idea2code@gmail.com \",\n    \"phone\":\"9685741023\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/order/createorder",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"order",
+										"createorder"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getorders",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1Z29pbGx1dGF1cmF1LTYwMDBAeW9wbWFpbC5jb20iLCJuYW1lIjoidGVzdCIsIl9pZCI6IjY3YTBiMDE3YTNkMjRlZGViNzIyZDAxOSIsImlhdCI6MTczODk5MDEyNX0.kmb_ajbJppfGrEu_Sjq8Sm6zVC4UWQJjbCFJH-ASlEc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5600/api/app/order/getorders",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"order",
+										"getorders"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "successpayment",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Imx1Z29pbGx1dGF1cmF1LTYwMDBAeW9wbWFpbC5jb20iLCJuYW1lIjoidGVzdCIsIl9pZCI6IjY3YTBiMDE3YTNkMjRlZGViNzIyZDAxOSIsImlhdCI6MTczODk5MDEyNX0.kmb_ajbJppfGrEu_Sjq8Sm6zVC4UWQJjbCFJH-ASlEc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"razorpay_order_id\": \"order_PuHoTIINbdzksx\",\n    \"razorpay_payment_id\": \"pay_PuHohSW5L2wn01\",\n    \"razorpay_signature\": \"cadf713dc7386827eff8842489902f0492246897a9c829217dc09950fd82d276\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/order/successpayment",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"order",
+										"successpayment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getorderbyid",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\":\"67aae70da0c0f04e2ef0f86d\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/order/getorderbyid",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"order",
+										"getorderbyid"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Event Sponser",
+					"item": [
+						{
+							"name": "getsponsor",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"eventid\":\"6799f811fcfe666fbf1d0464\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5600/api/app/event/getsponsor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5600",
+									"path": [
+										"api",
+										"app",
+										"event",
+										"getsponsor"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "https://www.googleapis.com/oauth2/v3/userinfo",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "ya29.a0AXeO80THugTmIqBsUD15KuA-VMum8TOmNCrm0nSwnV-pJkR72Q0QA0JqcLJWlmwvy02VxKOT139sH-oylnevbnIkVodTMQeOZ_L_HXim3wwkMe0e2yC9955h8W0cXx2LBecEsJPc32_MsjRLLDCpaHUMR5q_aKq85o4BTu_XaCgYKAVESARESFQHGX2MiNMlIauZQD2UfjhML-0vg4g0175",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.googleapis.com/oauth2/v3/userinfo",
+					"protocol": "https",
+					"host": [
+						"www",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"oauth2",
+						"v3",
+						"userinfo"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
